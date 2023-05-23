@@ -1,5 +1,6 @@
 package com.blog.blog_post.config;
 
+import com.blog.blog_post.dto.AuthorDTO;
 import com.blog.blog_post.entities.Post;
 import com.blog.blog_post.entities.User;
 import com.blog.blog_post.repositories.PostRepositorie;
@@ -32,9 +33,9 @@ public class Instantiation implements CommandLineRunner {
 
         userRepositorie.saveAll(Arrays.asList(maria, alex, bob));
 
-        Post post1 = new Post(null, Instant.now(),  "Partiu Viagem", "Vou viajar para são paulo. Abraços!", maria);
-        Post post2 = new Post(null, Instant.now(),  "Bom dia", "Acordei feliz hoje", alex);
-        Post post3 = new Post(null, Instant.now(),  "Voltando para casa", "Minha viagem acaba hoje, foi muito bom", maria);
+        Post post1 = new Post(null, Instant.now(),  "Partiu Viagem", "Vou viajar para são paulo. Abraços!", new AuthorDTO(maria));
+        Post post2 = new Post(null, Instant.now(),  "Bom dia", "Acordei feliz hoje", new AuthorDTO(alex));
+        Post post3 = new Post(null, Instant.now(),  "Voltando para casa", "Minha viagem acaba hoje, foi muito bom", new AuthorDTO(maria));
 
         postRepositorie.saveAll(Arrays.asList(post1, post2, post3));
     }

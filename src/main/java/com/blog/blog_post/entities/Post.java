@@ -1,5 +1,6 @@
 package com.blog.blog_post.entities;
 
+import com.blog.blog_post.dto.AuthorDTO;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serial;
@@ -19,18 +20,18 @@ public class Post implements Serializable {
     private String title;
     private String body;
 
-    private User user;
+    private AuthorDTO authorDTO;
     private List<Comment> comments = new ArrayList<>();
 
     public Post() {
     }
 
-    public Post(String id, Instant date, String title, String body, User user) {
+    public Post(String id, Instant date, String title, String body, AuthorDTO authorDTO) {
         this.id = id;
         this.date = date;
         this.title = title;
         this.body = body;
-        this.user = user;
+        this.authorDTO = authorDTO;
     }
 
     public String getId() {
@@ -65,12 +66,12 @@ public class Post implements Serializable {
         this.body = body;
     }
 
-    public User getUser() {
-        return user;
+    public AuthorDTO getUser() {
+        return authorDTO;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(AuthorDTO authorDTO) {
+        this.authorDTO = authorDTO;
     }
 
     public List<Comment> getComments() {
