@@ -1,6 +1,8 @@
 package com.blog.blog_post.entities;
 
+import org.springframework.context.annotation.Lazy;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serial;
@@ -18,6 +20,7 @@ public class User implements Serializable {
     private String name;
     private String email;
 
+    @DBRef(lazy = true) // Só carrega os posts caso os posts sejam acessados
     private List<Post> posts = new ArrayList<>();
 
     public User() {
