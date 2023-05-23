@@ -1,6 +1,7 @@
 package com.blog.blog_post.entities;
 
 import com.blog.blog_post.dto.AuthorDTO;
+import com.blog.blog_post.dto.CommentDTO;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serial;
@@ -21,7 +22,7 @@ public class Post implements Serializable {
     private String body;
 
     private AuthorDTO authorDTO;
-    private List<Comment> comments = new ArrayList<>();
+    private List<CommentDTO> comments = new ArrayList<>();
 
     public Post() {
     }
@@ -74,7 +75,7 @@ public class Post implements Serializable {
         this.authorDTO = authorDTO;
     }
 
-    public List<Comment> getComments() {
+    public List<CommentDTO> getComments() {
         return comments;
     }
 
