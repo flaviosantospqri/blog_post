@@ -1,6 +1,7 @@
 package com.blog.blog_post.resources;
 
 import com.blog.blog_post.dto.UserDTO;
+import com.blog.blog_post.entities.Post;
 import com.blog.blog_post.entities.User;
 import com.blog.blog_post.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,6 +56,11 @@ public class UserResource {
         return ResponseEntity.noContent().build();
     }
 
-
+    @GetMapping("/{id}/posts")
+    public ResponseEntity<List<Post>>  findPosts(@PathVariable String id){
+        User user = userService.findById(id);
+        List<Post> posts = user.getPosts();
+        return ResponseEntity.ok().body(posts);
+    }
 
 }
