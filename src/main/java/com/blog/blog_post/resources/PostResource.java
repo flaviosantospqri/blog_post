@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -27,6 +29,19 @@ public class PostResource {
     public ResponseEntity<List<Post>> findByTitle(@RequestParam(value = "text", defaultValue = "") String text){
         text = URL.decodeParam(text);
         List<Post> list = postService.findByText(text);
+        return ResponseEntity.ok().body(list);
+    }
+    @GetMapping("/fullSearch")
+    public ResponseEntity<List<Post>> fullSearch(
+            @RequestParam(value = "text", defaultValue = "") String text,
+            @RequestParam(value = "minDate", defaultValue = "") String minDate,
+            @RequestParam(value = "maxDate", defaultValue = "") String maxDate
+    )
+    {
+        text = URL.decodeParam(text);
+        Date min = URL.convertInstant(minDate, new Date(0L));
+        Date max = URL.convertInstant(minDate, new Date());
+        List<Post> list = postService.findByFullSearch(text, min, max);
         return ResponseEntity.ok().body(list);
     }
 }

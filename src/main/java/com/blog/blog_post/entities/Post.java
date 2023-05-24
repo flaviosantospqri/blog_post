@@ -8,6 +8,7 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Document
@@ -17,7 +18,7 @@ public class Post implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String id;
-    private Instant date;
+    private Date date;
     private String title;
     private String body;
 
@@ -27,7 +28,7 @@ public class Post implements Serializable {
     public Post() {
     }
 
-    public Post(String id, Instant date, String title, String body, AuthorDTO authorDTO) {
+    public Post(String id, Date date, String title, String body, AuthorDTO authorDTO) {
         this.id = id;
         this.date = date;
         this.title = title;
@@ -43,11 +44,11 @@ public class Post implements Serializable {
         this.id = id;
     }
 
-    public Instant getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(Instant date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

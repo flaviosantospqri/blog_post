@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
 
 import java.time.Instant;
 import java.util.Arrays;
+import java.util.Date;
 
 @Configuration
 public class Instantiation implements CommandLineRunner {
@@ -34,9 +35,9 @@ public class Instantiation implements CommandLineRunner {
 
         userRepositorie.saveAll(Arrays.asList(maria, alex, bob));
 
-        Post post1 = new Post(null, Instant.now(),  "Partiu Viagem", "Vou viajar para são paulo. Abraços!", new AuthorDTO(maria));
-        Post post2 = new Post(null, Instant.now(),  "Bom dia", "Acordei feliz hoje", new AuthorDTO(alex));
-        Post post3 = new Post(null, Instant.now(),  "Voltando para casa", "Minha viagem acaba hoje, foi muito bom", new AuthorDTO(maria));
+        Post post1 = new Post(null, new Date(2023,06,8),  "Partiu Viagem", "Vou viajar para são paulo. Abraços!", new AuthorDTO(maria));
+        Post post2 = new Post(null, new Date(2023,02,20),  "Bom dia", "Acordei feliz hoje", new AuthorDTO(alex));
+        Post post3 = new Post(null, new Date(2023,02,15),  "Voltando para casa", "Minha viagem acaba hoje, foi muito bom", new AuthorDTO(maria));
 
         CommentDTO c1 = new CommentDTO("Boa viagem mana", Instant.now(), new AuthorDTO( alex));
         CommentDTO c2 = new CommentDTO("Yes", Instant.now(), new AuthorDTO( bob));
